@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CT ",
+    "   ",
+    " TR"
+  ],
+  "key": {
+    "C": {
+      "item": "multiverse:container"
+    },
+    "T": {
+      "item": "multiverse:tube_of_copper"
+    },
+    "R": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "item": "multiverse:fluid_distiller",
+    "count": 1
+  }
+}

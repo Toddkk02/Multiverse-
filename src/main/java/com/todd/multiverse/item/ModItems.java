@@ -15,7 +15,14 @@ public class ModItems {
 
     public static final Item GREEN_POWDER = registerItem("green_powder",
             new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+    public static final Item TUBE_OF_COPPER = registerItem("tube_of_copper",
+            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+    public static final Item CONTAINER = registerItem("container",
+            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
 
+    // Metodo per registrare un singolo oggetto e l'oggetto associato)
+
+    // Metodo per registrare tutti gli oggetti)
     // Metodo per registrare un singolo oggetto
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(Multiverse.MOD_ID, name), item);
