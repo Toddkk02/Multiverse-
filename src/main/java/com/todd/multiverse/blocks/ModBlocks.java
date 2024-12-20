@@ -14,6 +14,15 @@ public class ModBlocks {
     public static final Block GREEN_ROCK_ORE = registerBlock("green_rock_ore",
             new Block(Block.Settings.of(Material.STONE)));
 
+    public static final Block FLUID_DISTILLER = registerBlock("fluid_distiller",
+            new Block(Block.Settings.of(Material.METAL)));
+    /*
+    public static final Block PHOSPHORUS_TRANSFORMER = registerBlock("phosphorus_transformer",
+            new Block(Block.Settings.of(Material.METAL)));
+    */
+    // Metodo per registrare tutti i blocchi)
+
+    // Metodo per registrare un singolo)
     // Metodo per registrare il blocco e l'oggetto associato
     private static Block registerBlock(String name, Block block) {
         // Registrazione del blocco
