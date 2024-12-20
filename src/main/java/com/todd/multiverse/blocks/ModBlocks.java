@@ -16,10 +16,10 @@ public class ModBlocks {
 
     public static final Block FLUID_DISTILLER = registerBlock("fluid_distiller",
             new Block(Block.Settings.of(Material.METAL)));
-    /*
-    public static final Block PHOSPHORUS_TRANSFORMER = registerBlock("phosphorus_transformer",
+
+    public static final Block PHOSPHORUS_PRECURSOR = registerBlock("phosphorus_precursor",
             new Block(Block.Settings.of(Material.METAL)));
-    */
+
     // Metodo per registrare tutti i blocchi)
 
     // Metodo per registrare un singolo)
