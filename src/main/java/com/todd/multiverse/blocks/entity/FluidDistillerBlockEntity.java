@@ -1,7 +1,6 @@
 package com.todd.multiverse.blocks.entity;
 
-import com.todd.multiverse.blocks.entity.ImplementedInventory;
-import com.todd.multiverse.blocks.entity.ModBlockEntities;
+import com.todd.multiverse.recipe.FluidDistillerRecipe;
 import com.todd.multiverse.screen.FluidDistillerScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -21,11 +20,14 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class FluidDistillerBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY); // Hai 2 slot // Input e output
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY); // 2 input slots + 1 output
     private final PropertyDelegate propertyDelegate;
+    private static final int INPUT_SLOT1 = 0;
+    private static final int INPUT_SLOT2 = 1;
+    private static final int OUTPUT_SLOT = 2;
 
     private int progress = 0;
-    private int maxProgress = 100; // Durata della distillazione
+    private int maxProgress = 100;
 
     public FluidDistillerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.FLUID_DISTILLER, pos, state);
@@ -56,7 +58,7 @@ public class FluidDistillerBlockEntity extends BlockEntity implements NamedScree
 
     @Override
     public DefaultedList<ItemStack> getItems() {
-        return this.inventory;
+        return inventory;
     }
 
     @Override
@@ -64,7 +66,75 @@ public class FluidDistillerBlockEntity extends BlockEntity implements NamedScree
         return Text.literal("Fluid Distiller");
     }
 
+    public static void tick(World world, BlockPos pos, BlockState state, FluidDistillerBlockEntity entity) {
+        if (world.isClient()) {
+            return;
+        }
 
+        if (hasRecipe(entity)) {
+            entity.progress++;
+            markDirty(world, pos, state);
+            if (entity.progress >= entity.maxProgress) {
+                craftItem(entity);
+            }
+        } else {
+            entity.resetProgress();
+            markDirty(world, pos, state);
+        }
+    }
+
+    private static void craftItem(FluidDistillerBlockEntity entity) {
+        SimpleInventory inventory = new SimpleInventory(3);
+        for (int i = 0; i < entity.size(); i++) {
+            inventory.setStack(i, entity.getStack(i));
+        }
+
+        if (hasRecipe(entity)) {
+            // Find the matching recipe
+            World world = entity.getWorld();
+            FluidDistillerRecipe recipe = world.getRecipeManager()
+                    .getFirstMatch(FluidDistillerRecipe.Type.INSTANCE, inventory, world)
+                    .orElse(null);
+
+            if (recipe != null) {
+                // Remove items from input slots
+                entity.removeStack(INPUT_SLOT1, 1);
+                entity.removeStack(INPUT_SLOT2, 1);
+
+                // Set the output item
+                entity.setStack(OUTPUT_SLOT, new ItemStack(recipe.getOutput().getItem(),
+                        entity.getStack(OUTPUT_SLOT).getCount() + 1));
+            }
+            entity.resetProgress();
+        }
+    }
+
+    private static boolean hasRecipe(FluidDistillerBlockEntity entity) {
+        World world = entity.getWorld();
+        SimpleInventory inventory = new SimpleInventory(3);
+
+        for (int i = 0; i < entity.size(); i++) {
+            inventory.setStack(i, entity.getStack(i));
+        }
+
+        FluidDistillerRecipe recipe = world.getRecipeManager()
+                .getFirstMatch(FluidDistillerRecipe.Type.INSTANCE, inventory, world)
+                .orElse(null);
+
+        if (recipe == null) return false;
+
+        // Check if output slot has room
+        ItemStack outputStack = entity.getStack(OUTPUT_SLOT);
+        if (outputStack.isEmpty()) return true;
+
+        if (!outputStack.isItemEqual(recipe.getOutput())) return false;
+
+        return outputStack.getCount() < outputStack.getMaxCount();
+    }
+
+    private void resetProgress() {
+        this.progress = 0;
+    }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
@@ -80,69 +150,9 @@ public class FluidDistillerBlockEntity extends BlockEntity implements NamedScree
         progress = nbt.getInt("fluid_distiller.progress");
     }
 
-    private void resetProgress() {
-        this.progress = 0;
-    }
-
-    public static void tick(World world, BlockPos blockPos, BlockState state, FluidDistillerBlockEntity entity) {
-        if (world.isClient()) {
-            return;
-        }
-
-        if (hasRecipe(entity)) {
-            entity.progress++;
-            markDirty(world, blockPos, state);
-            if (entity.progress >= entity.maxProgress) {
-                craftItem(entity);
-            }
-        } else {
-            entity.resetProgress();
-            markDirty(world, blockPos, state);
-        }
-    }
-
-    private static void craftItem(FluidDistillerBlockEntity entity) {
-        SimpleInventory inventory = new SimpleInventory(entity.size());
-        for (int i = 0; i < entity.size(); i++) {
-            inventory.setStack(i, entity.getStack(i));
-        }
-
-        if (hasRecipe(entity)) {
-            entity.removeStack(0, 1); // Rimuove l'input
-
-            // Aggiunge il risultato della distillazione
-            ItemStack output = entity.getStack(1);
-            output.increment(1);
-            entity.setStack(1, output);
-
-            entity.resetProgress();
-        }
-    }
-
-    private static boolean hasRecipe(FluidDistillerBlockEntity entity) {
-        SimpleInventory inventory = new SimpleInventory(entity.size());
-        for (int i = 0; i < entity.size(); i++) {
-            inventory.setStack(i, entity.getStack(i));
-        }
-
-        // Controlla che ci sia un input valido
-        boolean hasValidInput = !inventory.getStack(0).isEmpty();
-
-        // Controlla se c'è spazio nell'output
-        return hasValidInput && canInsertAmountIntoOutputSlot(inventory);
-    }
-
-    private static boolean canInsertAmountIntoOutputSlot(SimpleInventory inventory) {
-        return inventory.getStack(1).getMaxCount() > inventory.getStack(1).getCount();
-    }
-
     @Nullable
     @Override
-    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity playerEntity) {
+    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
         return new FluidDistillerScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
-
-    }
-
-
-
+}

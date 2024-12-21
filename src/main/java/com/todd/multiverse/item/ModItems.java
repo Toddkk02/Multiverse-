@@ -19,8 +19,12 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ItemGroup.MISC)));
     public static final Item CONTAINER = registerItem("container",
             new Item(new FabricItemSettings().group(ItemGroup.MISC)));
-public static final Item RED_PRECURSOR = registerItem("red_precursor",
-    new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+    public static final Item RED_PRECURSOR = registerItem("red_precursor",
+            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+    public static final Item BOTTLE_OF_PORTAL_FLUID = registerItem("bottle_of_portal_fluid",
+            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+
+    // Metodo per registrare un singolo oggetto e l'oggetto associato)
     // Metodo per registrare un singolo oggetto e l'oggetto associato)
 
     // Metodo per registrare tutti gli oggetti)

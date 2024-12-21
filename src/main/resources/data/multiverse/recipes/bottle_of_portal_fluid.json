@@ -1,0 +1,15 @@
+{
+  "type": "multiverse:fluid_distilling",
+  "ingredients": [
+    {
+      "item": "multiverse:green_powder"
+    },
+    {
+      "item": "multiverse:red_precursor"
+    }
+  ],
+  "output": {
+    "item": "multiverse:bottle_of_portal_fluid",
+    "count": 1
+  }
+}
