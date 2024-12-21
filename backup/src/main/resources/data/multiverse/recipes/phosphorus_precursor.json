@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PSP",
+    "LLL",
+    "L L"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:glass_bottle"
+    },
+    "P": {
+      "item": "minecraft:stone"
+    },
+    "L": {
+      "item": "minecraft:oak_planks"
+    }
+  },
+  "result": {
+    "item": "multiverse:phosphorus_precursor",
+    "count": 1
+  }
+}

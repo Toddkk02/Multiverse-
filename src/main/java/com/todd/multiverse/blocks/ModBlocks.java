@@ -1,6 +1,7 @@
 package com.todd.multiverse.blocks;
 
 import com.todd.multiverse.Multiverse;
+import com.todd.multiverse.blocks.custom.FluidDistillerBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
@@ -15,7 +16,9 @@ public class ModBlocks {
             new Block(Block.Settings.of(Material.STONE)));
 
     public static final Block FLUID_DISTILLER = registerBlock("fluid_distiller",
-            new Block(Block.Settings.of(Material.METAL)));
+        new FluidDistillerBlock(Block.Settings.of(Material.METAL)
+                .strength(4.0f)
+                .requiresTool()));
 
     public static final Block PHOSPHORUS_PRECURSOR = registerBlock("phosphorus_precursor",
             new Block(Block.Settings.of(Material.METAL)));

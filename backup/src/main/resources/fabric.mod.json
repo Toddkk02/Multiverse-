@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "multiverse",
+  "version": "1.0.0",
+  "name": "Multiverse",
+  "description": "A mod that adds new dimensions and items",
+  "authors": [
+    "Todd"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "MIT",
+  "icon": "assets/multiverse/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.todd.multiverse.Multiverse"
+    ],
+    "client": [
+      "com.todd.multiverse.MultiverseClient"
+    ]
+  },
+  "mixins": [
+    "multiverse.mixins.json",
+    "multiverse.client.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.21",
+    "minecraft": "~1.19.2",
+    "java": ">=17",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
