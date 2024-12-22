@@ -1,11 +1,10 @@
 package com.todd.multiverse.item.custom;
 
-import com.todd.multiverse.blocks.entity.ProjectileEntity;
+import com.todd.multiverse.blocks.entity.BulletEntity;
 import com.todd.multiverse.item.ModItems;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
@@ -22,7 +21,7 @@ public class PortalGun extends Item {
         ItemStack itemStack = player.getStackInHand(hand);
 
         if (!world.isClient) {
-            ProjectileEntity projectile = new ProjectileEntity(world, player, new ItemStack(ModItems.BULLET));
+            com.todd.multiverse.blocks.entity.BulletEntity projectile = new BulletEntity(world, player, new ItemStack(ModItems.BULLET));
             projectile.setVelocity(player, player.getPitch(), player.getYaw(), 0.0F, 1.5F, 1.0F);
             world.spawnEntity(projectile);
 

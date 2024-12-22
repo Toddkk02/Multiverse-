@@ -1,45 +1,40 @@
 package com.todd.multiverse.blocks.entity;
 
-import com.todd.multiverse.Multiverse;
-import net.minecraft.entity.projectile.ProjectileEntity;
-
+import com.todd.multiverse.item.ModItems;
+import com.todd.multiverse.registry.ModEntities;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.network.Packet;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
-import net.minecraft.entity.damage.DamageSource;
 
-public class BulletEntity extends ProjectileEntity {
-    public BulletEntity(EntityType<? extends BulletEntity> entityType, World world) {
+public class BulletEntity extends ThrownItemEntity {
+    public BulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    public BulletEntity(World world, LivingEntity owner) {
-        this(Multiverse.BULLET_ENTITY, world);
-        this.setOwner(owner);
-        this.setPosition(owner.getX(), owner.getEyeY(), owner.getZ());
+    public BulletEntity(World world, double x, double y, double z, ItemStack stack) {
+        super(ModEntities.BULLET, x, y, z, world);
+        this.setItem(stack);
+    }
+
+    public BulletEntity(World world, PlayerEntity owner, ItemStack stack) {
+        super(ModEntities.BULLET, owner, world);
+        this.setItem(stack);
     }
 
     @Override
-    protected void onEntityHit(EntityHitResult entityHitResult) {
-    return;
+    protected Item getDefaultItem() {
+        return ModItems.BULLET;
     }
-    protected void onBlockHit(BlockHitResult blockHitResult) {
-    // Get the block position where the bullet hit
-    BlockPos pos = blockHitResult.getBlockPos();
-
-    // Get the world where the bullet is in
-    World world = this.world;
-}
 
     @Override
-    protected void initDataTracker() {
-
+    protected void onCollision(HitResult hitResult) {
+        if (!this.getWorld().isClient) {
+            this.discard();
+        }
+        super.onCollision(hitResult);
     }
-
 }

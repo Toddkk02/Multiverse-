@@ -5,10 +5,9 @@ import com.todd.multiverse.blocks.entity.ModBlockEntities;
 import com.todd.multiverse.item.ModItems;
 import com.todd.multiverse.item.custom.PortalGun;
 import com.todd.multiverse.recipe.FluidDistillerRecipe;
+import com.todd.multiverse.registry.ModEntities;
 import com.todd.multiverse.screen.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
@@ -35,7 +34,7 @@ public class Multiverse implements ModInitializer {
 		// Screen handlers e ricette
 		ModScreenHandlers.registerAllScreenHandlers();
 		registerRecipes();
-
+		ModEntities.registerEntities();
 		LOGGER.info("Multiverse Mod Initialized Successfully!");
 	}
 
