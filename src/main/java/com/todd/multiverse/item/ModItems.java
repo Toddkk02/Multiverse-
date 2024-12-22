@@ -1,6 +1,7 @@
 package com.todd.multiverse.item;
 
 import com.todd.multiverse.Multiverse;
+import com.todd.multiverse.item.custom.PortalGun;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -23,6 +24,8 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ItemGroup.MISC)));
     public static final Item BOTTLE_OF_PORTAL_FLUID = registerItem("bottle_of_portal_fluid",
             new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+    public static final Item PORTAL_GUN = registerItem("portal_gun",
+            new PortalGun(new FabricItemSettings().group(ItemGroup.MISC)));
 
     // Metodo per registrare un singolo oggetto e l'oggetto associato)
     // Metodo per registrare un singolo oggetto e l'oggetto associato)

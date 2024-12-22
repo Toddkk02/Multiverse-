@@ -79,7 +79,8 @@
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
-      "minecraft:stony_shore": "2024-12-21 19:27:56 +0100"
+      "minecraft:stony_shore": "2024-12-21 19:27:56 +0100",
+      "minecraft:old_growth_birch_forest": "2024-12-22 01:14:30 +0100"
     },
     "done": false
   },

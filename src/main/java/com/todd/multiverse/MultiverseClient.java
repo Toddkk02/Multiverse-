@@ -1,6 +1,5 @@
 package com.todd.multiverse;
 
-import com.todd.multiverse.blocks.entity.BulletEntityRenderer;
 import com.todd.multiverse.screen.FluidDistillerScreen;
 import com.todd.multiverse.screen.ModScreenHandlers;
 import net.fabricmc.api.ClientModInitializer;
@@ -11,7 +10,6 @@ public class MultiverseClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
      HandledScreens.register(ModScreenHandlers.FLUID_DISTILLER, FluidDistillerScreen::new);
-        EntityRendererRegistry.register(Multiverse.BULLET_ENTITY, BulletEntityRenderer::new);
-        // Qui puoi inizializzare configurazioni lato client
+
     }
 }

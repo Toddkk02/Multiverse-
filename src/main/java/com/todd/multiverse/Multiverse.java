@@ -1,7 +1,6 @@
 package com.todd.multiverse;
 
 import com.todd.multiverse.blocks.ModBlocks;
-import com.todd.multiverse.blocks.entity.BulletEntity;
 import com.todd.multiverse.blocks.entity.ModBlockEntities;
 import com.todd.multiverse.item.ModItems;
 import com.todd.multiverse.item.custom.PortalGun;
@@ -20,29 +19,29 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Multiverse implements ModInitializer {
-	public static final String MOD_ID = "multiverse"; // ID del mod
+	public static final String MOD_ID = "multiverse"; // Mod ID
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static final EntityType<BulletEntity> BULLET_ENTITY = Registry.register(
-			Registry.ENTITY_TYPE,
-			new Identifier(MOD_ID, "bullet"),
-			FabricEntityTypeBuilder.<BulletEntity>create(SpawnGroup.MISC, BulletEntity::new)
-					.dimensions(EntityDimensions.fixed(0.25F, 0.25F)) // Imposta le dimensioni dell'entità
-					.trackRangeBlocks(64) // Raggio di tracciamento
-					.trackedUpdateRate(1) // Frequenza di aggiornamento
-					.build()
-	);
+	// Register BulletEntity with a unique entity type
+	
 
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Initializing Multiverse Mod!");
+
+		// Register mod items, blocks, entities, etc.
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerAllScreenHandlers();
 
-		// Registra il tipo di ricetta e il serializer
+		// Register recipes
 		registerRecipes();
+
+		// Register portal gun as an item
+		registerPortalGunItem();
+
+		LOGGER.info("Multiverse Mod Initialized!");
 	}
 
 	private void registerRecipes() {
@@ -50,5 +49,10 @@ public class Multiverse implements ModInitializer {
 		Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(MOD_ID, FluidDistillerRecipe.Serializer.ID), FluidDistillerRecipe.Serializer.INSTANCE);
 		LOGGER.info("Registered custom recipes for Multiverse!");
 	}
-}
 
+	private void registerPortalGunItem() {
+		// Register the PortalGun item
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "portalgun"), new PortalGun(new Item.Settings().group(ItemGroup.MISC)));
+		LOGGER.info("PortalGun Item Registered!");
+	}
+}
