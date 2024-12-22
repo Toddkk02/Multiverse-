@@ -26,7 +26,8 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ItemGroup.MISC)));
     public static final Item PORTAL_GUN = registerItem("portal_gun",
             new PortalGun(new FabricItemSettings().group(ItemGroup.MISC)));
-
+    public static final Item BULLET = registerItem("bullet",
+            new Item(new FabricItemSettings()));
     // Metodo per registrare un singolo oggetto e l'oggetto associato)
     // Metodo per registrare un singolo oggetto e l'oggetto associato)
 

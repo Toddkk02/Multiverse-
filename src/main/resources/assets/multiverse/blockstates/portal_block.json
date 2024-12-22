@@ -1,0 +1,35 @@
+{
+  "variants": {
+    "orientation=floor,facing=north": {
+      "model": "multiverse:block/portal_block",
+      "rotation": [ 90, 0, 0 ]
+    },
+    "orientation=floor,facing=south": {
+      "model": "multiverse:block/portal_block",
+      "rotation": [ 90, 180, 0 ]
+    },
+    "orientation=floor,facing=east": {
+      "model": "multiverse:block/portal_block",
+      "rotation": [ 90, 90, 0 ]
+    },
+    "orientation=floor,facing=west": {
+      "model": "multiverse:block/portal_block",
+      "rotation": [ 90, 270, 0 ]
+    },
+    "orientation=wall,facing=north": {
+      "model": "multiverse:block/portal_block"
+    },
+    "orientation=wall,facing=south": {
+      "model": "multiverse:block/portal_block",
+      "y": 180
+    },
+    "orientation=wall,facing=east": {
+      "model": "multiverse:block/portal_block",
+      "y": 90
+    },
+    "orientation=wall,facing=west": {
+      "model": "multiverse:block/portal_block",
+      "y": 270
+    }
+  }
+}
