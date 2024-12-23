@@ -1,5 +1,11 @@
+
 {
   "variants": {
-    "": { "model": "multiverse:block/portal" }
+    "facing=north": { "model": "multiverse:block/portal" },
+    "facing=east": { "model": "multiverse:block/portal", "y": 90 },
+    "facing=south": { "model": "multiverse:block/portal", "y": 180 },
+    "facing=west": { "model": "multiverse:block/portal", "y": 270 },
+    "facing=up": { "model": "multiverse:block/portal", "x": 270 },
+    "facing=down": { "model": "multiverse:block/portal", "x": 90 }
   }
 }
