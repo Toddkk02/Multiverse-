@@ -3,12 +3,9 @@ package com.todd.multiverse.render;
 import com.todd.multiverse.blocks.entity.PortalBlockEntity;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import com.todd.multiverse.Multiverse;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3f;
 
 public class PortalBlockEntityRenderer implements BlockEntityRenderer<PortalBlockEntity> {
     private static final Identifier PORTAL_TEXTURE = new Identifier(Multiverse.MOD_ID, "textures/block/portal.png");
@@ -25,7 +22,6 @@ public class PortalBlockEntityRenderer implements BlockEntityRenderer<PortalBloc
         matrices.scale(3.0f, 3.0f, 1.0f);
 
         // Rotate texture clockwise
-        matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(entity.getRotation()));
 
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(PORTAL_TEXTURE));
 

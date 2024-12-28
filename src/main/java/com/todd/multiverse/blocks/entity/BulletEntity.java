@@ -47,22 +47,20 @@ public class BulletEntity extends ThrownItemEntity {
     }
 
     private void createPortal(BlockPos hitPos, Direction hitFace, Entity shooter) {
-        if (shooter == null || world == null) return;
+    if (shooter == null || world == null) return;
 
-        BlockPos portalPos = hitPos.offset(hitFace);
-        Direction.Axis portalAxis = hitFace.getAxis() == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
+    BlockPos portalPos = hitPos.offset(hitFace);
 
-        if (world.getBlockState(portalPos).isAir()) {
-            world.setBlockState(portalPos, ModBlocks.PORTAL.getDefaultState()
-                    .with(Properties.FACING, hitFace));
+    if (world.getBlockState(portalPos).isAir()) {
+        world.setBlockState(portalPos, ModBlocks.PORTAL.getDefaultState()
+                .with(Properties.FACING, hitFace));
 
-            BlockEntity blockEntity = world.getBlockEntity(portalPos);
-            if (blockEntity instanceof PortalBlockEntity portalEntity) {
-                portalEntity.setPortalAxis(portalAxis);
-                portalEntity.markDirty();
-            }
+        BlockEntity blockEntity = world.getBlockEntity(portalPos);
+        if (blockEntity instanceof PortalBlockEntity portalEntity) {
+            portalEntity.markDirty();
         }
     }
+}
 
 
     @Override
