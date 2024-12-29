@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:default",
+  "config": {
+    "top_material": {
+      "Name": "minecraft:pink_concrete"
+    },
+    "under_material": {
+      "Name": "minecraft:pink_concrete_powder"
+    },
+    "underwater_material": {
+      "Name": "multiverse:blue_stone"
+    }
+  }
+}

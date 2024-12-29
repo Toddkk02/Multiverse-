@@ -89,6 +89,7 @@ public class DestinationScreen extends HandledScreen<DestinationScreenHandler> {
             dimensions.add("minecraft:overworld");
             dimensions.add("minecraft:the_nether");
             dimensions.add("minecraft:the_end");
+            dimensions.add("multiverse:crystal_hills");
         }
     }
 

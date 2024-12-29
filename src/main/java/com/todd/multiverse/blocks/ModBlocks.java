@@ -35,13 +35,15 @@ public class ModBlocks {
 
     public static final Block PINK_SANDSTONE = registerBlock("pink_sandstone",
             new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F)));
-
+*/
     public static final Block BLUE_STONE = registerBlock("blue_stone",
             new Block(FabricBlockSettings.of(Material.STONE).strength(3.0F)));
 
+
+
     public static final Block BLUE_CRYSTAL = registerBlock("blue_crystal",
             new Block(FabricBlockSettings.of(Material.GLASS).strength(2.0F).luminance(15)));
-  */
+
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registry.BLOCK, new Identifier(Multiverse.MOD_ID, name), block);
