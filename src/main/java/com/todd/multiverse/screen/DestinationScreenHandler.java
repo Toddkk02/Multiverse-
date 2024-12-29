@@ -13,12 +13,13 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 public class DestinationScreenHandler extends ScreenHandler {
     private static final Identifier SAVE_LOCATION_PACKET = new Identifier("multiverse", "save_location");
@@ -28,6 +29,7 @@ public class DestinationScreenHandler extends ScreenHandler {
     private static final Identifier REQUEST_DIMENSIONS_PACKET = new Identifier("multiverse", "request_dimensions");
     private static final Identifier UPDATE_DIMENSIONS_PACKET = new Identifier("multiverse", "update_dimensions");
     private static final Identifier DELETE_LOCATION_PACKET = new Identifier("multiverse", "delete_location");
+
     private final PlayerEntity player;
     private final List<LocationManager> savedLocations = new ArrayList<>();
     private final List<String> availableDimensions = new ArrayList<>();
@@ -36,7 +38,6 @@ public class DestinationScreenHandler extends ScreenHandler {
         super(ModScreenHandlers.DESTINATION_SCREEN_HANDLER, syncId);
         this.player = inventory.player;
 
-        // Execute loading on server thread
         if (player.getServer() != null) {
             player.getServer().execute(() -> {
                 LocationManager.loadLocationsFromFile();
@@ -56,11 +57,16 @@ public class DestinationScreenHandler extends ScreenHandler {
 
     private void loadAvailableDimensions() {
         availableDimensions.clear();
+
+        // Add vanilla dimensions
         availableDimensions.add("minecraft:overworld");
         availableDimensions.add("minecraft:the_nether");
         availableDimensions.add("minecraft:the_end");
 
+        // Add modded dimensions
         if (player.getServer() != null) {
+            // Get all registered dimension types
+            Registry<World> worldRegistry = player.getServer().getWorld(World.OVERWORLD).getRegistryManager().get(Registry.WORLD_KEY);
             for (RegistryKey<World> worldKey : player.getServer().getWorldRegistryKeys()) {
                 String dimId = worldKey.getValue().toString();
                 if (!availableDimensions.contains(dimId)) {

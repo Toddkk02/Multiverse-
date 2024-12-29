@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:overworld",
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 0,
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "multiverse:crystal_hills"
+    },
+    "settings": "minecraft:overworld"
+  }
+}
