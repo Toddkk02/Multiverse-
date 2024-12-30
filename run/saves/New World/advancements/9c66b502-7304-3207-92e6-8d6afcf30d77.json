@@ -1,0 +1,9 @@
+{
+  "minecraft:nether/explore_nether": {
+    "criteria": {
+      "minecraft:nether_wastes": "2024-12-30 13:28:05 +0100"
+    },
+    "done": false
+  },
+  "DataVersion": 3120
+}

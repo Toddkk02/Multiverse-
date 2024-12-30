@@ -19,7 +19,9 @@
     [],
     [],
     [],
-    [],
+    [
+      "multiverse:crystal_spike_placed"
+    ],
     [],
     [],
     [],
@@ -30,10 +32,10 @@
     "type": "minecraft:default",
     "config": {
       "top_material": {
-        "Name": "minecraft:pink_concrete"
+        "Name": "minecraft:pink_concrete_powder"
       },
       "under_material": {
-        "Name": "minecraft:pink_concrete_powder"
+        "Name": "minecraft:pink_concrete"
       },
       "underwater_material": {
         "Name": "multiverse:blue_stone"

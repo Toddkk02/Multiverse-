@@ -1,14 +1,14 @@
 package com.todd.multiverse.world.biomes;
 
-import net.minecraft.block.Blocks;
+import com.todd.multiverse.world.ModFeatures;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.surfacebuilder.MaterialRules;
 
 public class CrystalHillsBiome {
     public static Biome createBiome() {
@@ -17,15 +17,21 @@ public class CrystalHillsBiome {
         DefaultBiomeFeatures.addMonsters(spawnSettings, 95, 5, 100, false);
 
         GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
+
+        // Aggiungi le feature base del terreno
         DefaultBiomeFeatures.addLandCarvers(generationSettings);
-        DefaultBiomeFeatures.addDungeons(generationSettings);
-        DefaultBiomeFeatures.addMineables(generationSettings);
-        DefaultBiomeFeatures.addDefaultOres(generationSettings);
-        DefaultBiomeFeatures.addDefaultDisks(generationSettings);
+        DefaultBiomeFeatures.addPlainsTallGrass(generationSettings);
         DefaultBiomeFeatures.addSprings(generationSettings);
+        DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
+
+        // Aggiungi i Crystal Spikes
+        generationSettings.feature(
+                GenerationStep.Feature.SURFACE_STRUCTURES,
+                RegistryEntry.of(ModFeatures.CRYSTAL_SPIKE_PLACED)
+        );
 
         return new Biome.Builder()
-                .precipitation(Biome.Precipitation.NONE)
+                .precipitation(Biome.Precipitation.RAIN)
                 .temperature(0.8f)
                 .downfall(0.4f)
                 .effects(new BiomeEffects.Builder()
@@ -33,6 +39,8 @@ public class CrystalHillsBiome {
                         .waterFogColor(329011)
                         .fogColor(12638463)
                         .skyColor(calculateSkyColor(0.8f))
+                        .grassColor(9470285)
+                        .foliageColor(9470285)
                         .build())
                 .spawnSettings(spawnSettings.build())
                 .generationSettings(generationSettings.build())

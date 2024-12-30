@@ -1,0 +1,297 @@
+---- Minecraft Crash Report ----
+// Sorry :(
+
+Time: 2024-12-30 13:48:38
+Description: Feature placement
+
+java.lang.ClassCastException: class net.minecraft.util.math.random.ChunkRandom cannot be cast to class java.util.Random (net.minecraft.util.math.random.ChunkRandom is in unnamed module of loader 'knot' @387c703b; java.util.Random is in module java.base of loader 'bootstrap')
+	at knot//com.todd.multiverse.structures.CrystalSpikeFeature.generate(CrystalSpikeFeature.java:26)
+	at knot//net.minecraft.world.gen.feature.Feature.generateIfValid(Feature.java:165)
+	at knot//net.minecraft.world.gen.feature.ConfiguredFeature.generate(ConfiguredFeature.java:27)
+	at knot//net.minecraft.world.gen.feature.PlacedFeature.method_39646(PlacedFeature.java:56)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:807)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:294)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:807)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:294)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:807)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:294)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:807)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:294)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.IntPipeline$1$1.accept(IntPipeline.java:180)
+	at java.base/java.util.stream.Streams$RangeIntSpliterator.forEachRemaining(Streams.java:104)
+	at java.base/java.util.Spliterator$OfInt.forEachRemaining(Spliterator.java:712)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:636)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:294)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:636)
+	at knot//net.minecraft.world.gen.feature.PlacedFeature.generate(PlacedFeature.java:55)
+	at knot//net.minecraft.world.gen.feature.PlacedFeature.generate(PlacedFeature.java:44)
+	at knot//net.minecraft.world.gen.chunk.ChunkGenerator.generateFeatures(ChunkGenerator.java:466)
+	at knot//net.minecraft.world.chunk.ChunkStatus.method_20613(ChunkStatus.java:145)
+	at knot//net.minecraft.world.chunk.ChunkStatus.runGenerationTask(ChunkStatus.java:292)
+	at knot//net.minecraft.server.world.ThreadedAnvilChunkStorage.method_17225(ThreadedAnvilChunkStorage.java:679)
+	at knot//com.mojang.datafixers.util.Either$Left.map(Either.java:38)
+	at knot//net.minecraft.server.world.ThreadedAnvilChunkStorage.method_17224(ThreadedAnvilChunkStorage.java:673)
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1194)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:526)
+	at knot//net.minecraft.server.world.ChunkTaskPrioritySystem.method_17634(ChunkTaskPrioritySystem.java:62)
+	at knot//net.minecraft.util.thread.TaskExecutor.runNext(TaskExecutor.java:91)
+	at knot//net.minecraft.util.thread.TaskExecutor.runWhile(TaskExecutor.java:146)
+	at knot//net.minecraft.util.thread.TaskExecutor.run(TaskExecutor.java:102)
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1726)
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1717)
+	at java.base/java.util.concurrent.ForkJoinTask$InterruptibleTask.exec(ForkJoinTask.java:1641)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1458)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2034)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at knot//com.todd.multiverse.structures.CrystalSpikeFeature.generate(CrystalSpikeFeature.java:26)
+	at knot//net.minecraft.world.gen.feature.Feature.generateIfValid(Feature.java:165)
+	at knot//net.minecraft.world.gen.feature.ConfiguredFeature.generate(ConfiguredFeature.java:27)
+	at knot//net.minecraft.world.gen.feature.PlacedFeature.method_39646(PlacedFeature.java:56)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:807)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:294)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:807)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:294)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:807)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:294)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:807)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:294)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.IntPipeline$1$1.accept(IntPipeline.java:180)
+	at java.base/java.util.stream.Streams$RangeIntSpliterator.forEachRemaining(Streams.java:104)
+	at java.base/java.util.Spliterator$OfInt.forEachRemaining(Spliterator.java:712)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:636)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:294)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:636)
+	at knot//net.minecraft.world.gen.feature.PlacedFeature.generate(PlacedFeature.java:55)
+	at knot//net.minecraft.world.gen.feature.PlacedFeature.generate(PlacedFeature.java:44)
+	at knot//net.minecraft.world.gen.chunk.ChunkGenerator.generateFeatures(ChunkGenerator.java:466)
+	at knot//net.minecraft.world.chunk.ChunkStatus.method_20613(ChunkStatus.java:145)
+	at knot//net.minecraft.world.chunk.ChunkStatus.runGenerationTask(ChunkStatus.java:292)
+	at knot//net.minecraft.server.world.ThreadedAnvilChunkStorage.method_17225(ThreadedAnvilChunkStorage.java:679)
+	at knot//com.mojang.datafixers.util.Either$Left.map(Either.java:38)
+	at knot//net.minecraft.server.world.ThreadedAnvilChunkStorage.method_17224(ThreadedAnvilChunkStorage.java:673)
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1194)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:526)
+	at knot//net.minecraft.server.world.ChunkTaskPrioritySystem.method_17634(ChunkTaskPrioritySystem.java:62)
+	at knot//net.minecraft.util.thread.TaskExecutor.runNext(TaskExecutor.java:91)
+	at knot//net.minecraft.util.thread.TaskExecutor.runWhile(TaskExecutor.java:146)
+	at knot//net.minecraft.util.thread.TaskExecutor.run(TaskExecutor.java:102)
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1726)
+
+-- Feature --
+Details:
+	Description: ResourceKey[minecraft:worldgen/placed_feature / multiverse:crystal_spike_placed]
+Stacktrace:
+	at knot//net.minecraft.world.gen.chunk.ChunkGenerator.generateFeatures(ChunkGenerator.java:466)
+	at knot//net.minecraft.world.chunk.ChunkStatus.method_20613(ChunkStatus.java:145)
+	at knot//net.minecraft.world.chunk.ChunkStatus.runGenerationTask(ChunkStatus.java:292)
+	at knot//net.minecraft.server.world.ThreadedAnvilChunkStorage.method_17225(ThreadedAnvilChunkStorage.java:679)
+	at knot//com.mojang.datafixers.util.Either$Left.map(Either.java:38)
+	at knot//net.minecraft.server.world.ThreadedAnvilChunkStorage.method_17224(ThreadedAnvilChunkStorage.java:673)
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1194)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:526)
+	at knot//net.minecraft.server.world.ChunkTaskPrioritySystem.method_17634(ChunkTaskPrioritySystem.java:62)
+	at knot//net.minecraft.util.thread.TaskExecutor.runNext(TaskExecutor.java:91)
+	at knot//net.minecraft.util.thread.TaskExecutor.runWhile(TaskExecutor.java:146)
+	at knot//net.minecraft.util.thread.TaskExecutor.run(TaskExecutor.java:102)
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1726)
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1717)
+	at java.base/java.util.concurrent.ForkJoinTask$InterruptibleTask.exec(ForkJoinTask.java:1641)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1458)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2034)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+
+-- Generation --
+Details:
+	CenterX: -64
+	CenterZ: -228
+	Seed: 8075046647314165754
+Stacktrace:
+	at knot//net.minecraft.world.gen.chunk.ChunkGenerator.generateFeatures(ChunkGenerator.java:466)
+	at knot//net.minecraft.world.chunk.ChunkStatus.method_20613(ChunkStatus.java:145)
+	at knot//net.minecraft.world.chunk.ChunkStatus.runGenerationTask(ChunkStatus.java:292)
+	at knot//net.minecraft.server.world.ThreadedAnvilChunkStorage.method_17225(ThreadedAnvilChunkStorage.java:679)
+	at knot//com.mojang.datafixers.util.Either$Left.map(Either.java:38)
+	at knot//net.minecraft.server.world.ThreadedAnvilChunkStorage.method_17224(ThreadedAnvilChunkStorage.java:673)
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1194)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:526)
+	at knot//net.minecraft.server.world.ChunkTaskPrioritySystem.method_17634(ChunkTaskPrioritySystem.java:62)
+	at knot//net.minecraft.util.thread.TaskExecutor.runNext(TaskExecutor.java:91)
+	at knot//net.minecraft.util.thread.TaskExecutor.runWhile(TaskExecutor.java:146)
+	at knot//net.minecraft.util.thread.TaskExecutor.run(TaskExecutor.java:102)
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1726)
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1717)
+	at java.base/java.util.concurrent.ForkJoinTask$InterruptibleTask.exec(ForkJoinTask.java:1641)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1458)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2034)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+
+-- Chunk to be generated --
+Details:
+	Location: -64,-228
+	Position hash: -974957576256
+	Generator: net.minecraft.world.gen.chunk.NoiseChunkGenerator@4af85a98
+Stacktrace:
+	at knot//net.minecraft.server.world.ThreadedAnvilChunkStorage.method_17225(ThreadedAnvilChunkStorage.java:679)
+	at knot//com.mojang.datafixers.util.Either$Left.map(Either.java:38)
+	at knot//net.minecraft.server.world.ThreadedAnvilChunkStorage.method_17224(ThreadedAnvilChunkStorage.java:673)
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1194)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:526)
+	at knot//net.minecraft.server.world.ChunkTaskPrioritySystem.method_17634(ChunkTaskPrioritySystem.java:62)
+	at knot//net.minecraft.util.thread.TaskExecutor.runNext(TaskExecutor.java:91)
+	at knot//net.minecraft.util.thread.TaskExecutor.runWhile(TaskExecutor.java:146)
+	at knot//net.minecraft.util.thread.TaskExecutor.run(TaskExecutor.java:102)
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1726)
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1717)
+	at java.base/java.util.concurrent.ForkJoinTask$InterruptibleTask.exec(ForkJoinTask.java:1641)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1458)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2034)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+
+-- Affected level --
+Details:
+	All players: 1 total; [ServerPlayerEntity['Player16'/173, l='ServerLevel[New World]', x=-1021.78, y=147.57, z=-3408.44]]
+	Chunk stats: 2749
+	Level dimension: multiverse:crystal_hills
+	Derived: true
+	Level spawn location: World: (-128,63,-160), Section: (at 0,15,0 in -8,3,-10; chunk contains blocks -128,-64,-160 to -113,319,-145), Region: (-1,-1; contains chunks -32,-32 to -1,-1, blocks -512,-64,-512 to -1,319,-1)
+	Level time: 3219 game time, 3219 day time
+	Level name: New World
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+	Level weather: Rain time: 86675 (now: false), thunder time: 162223 (now: false)
+	Known server brands: fabric
+	Level was modded: true
+	Level storage version: 0x04ABD - Anvil
+Stacktrace:
+	at knot//net.minecraft.server.MinecraftServer.tickWorlds(MinecraftServer.java:878)
+	at knot//net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:819)
+	at knot//net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:98)
+	at knot//net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:665)
+	at knot//net.minecraft.server.MinecraftServer.method_29739(MinecraftServer.java:257)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.19.2
+	Minecraft Version ID: 1.19.2
+	Operating System: Linux (amd64) version 6.11.10-200.fc40.x86_64
+	Java Version: 23.0.1, Oracle Corporation
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 994441112 bytes (948 MiB) / 3074424832 bytes (2932 MiB) up to 8392802304 bytes (8004 MiB)
+	CPUs: 16
+	Processor Vendor: AuthenticAMD
+	Processor Name: AMD Ryzen 7 5800X 8-Core Processor
+	Identifier: AuthenticAMD Family 25 Model 33 Stepping 2
+	Microarchitecture: Zen 3
+	Frequency (GHz): -0.00
+	Number of physical packages: 1
+	Number of physical CPUs: 8
+	Number of logical CPUs: 16
+	Graphics card #0 name: Navi 23 [Radeon RX 6600/6600 XT/6600M]
+	Graphics card #0 vendor: Advanced Micro Devices, Inc. [AMD/ATI] (0x1002)
+	Graphics card #0 VRAM (MB): 8448.00
+	Graphics card #0 deviceId: 0x73ff
+	Graphics card #0 versionInfo: unknown
+	Virtual memory max (MB): 24197.48
+	Virtual memory used (MB): 14001.49
+	Swap memory total (MB): 8192.00
+	Swap memory used (MB): 0.00
+	JVM Flags: 0 total; 
+	Fabric Mods: 
+		fabric-api: Fabric API 0.64.0+1.19.2
+		fabric-api-base: Fabric API Base 0.4.12+93d8cb8290
+		fabric-api-lookup-api-v1: Fabric API Lookup API (v1) 1.6.10+93d8cb8290
+		fabric-biome-api-v1: Fabric Biome API (v1) 9.0.18+c6af733c90
+		fabric-blockrenderlayer-v1: Fabric BlockRenderLayer Registration (v1) 1.1.21+c6af733c90
+		fabric-client-tags-api-v1: Fabric Client Tags 1.0.2+b35fea8390
+		fabric-command-api-v2: Fabric Command API (v2) 2.1.8+93d8cb8290
+		fabric-content-registries-v0: Fabric Content Registries (v0) 3.4.0+6064db2a90
+		fabric-convention-tags-v1: Fabric Convention Tags 1.1.2+93d8cb8290
+		fabric-crash-report-info-v1: Fabric Crash Report Info (v1) 0.2.6+aeb40ebe90
+		fabric-data-generation-api-v1: Fabric Data Generation API (v1) 5.2.2+b598f4ac90
+		fabric-dimensions-v1: Fabric Dimensions API (v1) 2.1.32+0dd10df690
+		fabric-entity-events-v1: Fabric Entity Events (v1) 1.4.19+9ff28f4090
+		fabric-events-interaction-v0: Fabric Events Interaction (v0) 0.4.29+c6af733c90
+		fabric-game-rule-api-v1: Fabric Game Rule API (v1) 1.0.22+c6af733c90
+		fabric-gametest-api-v1: Fabric Game Test API (v1) 1.1.1+704e47e990
+		fabric-item-api-v1: Fabric Item API (v1) 1.5.8+93d8cb8290
+		fabric-item-groups-v0: Fabric Item Groups (v0) 0.3.32+70efcffe90
+		fabric-key-binding-api-v1: Fabric Key Binding API (v1) 1.0.22+aaaf9d3390
+		fabric-lifecycle-events-v1: Fabric Lifecycle Events (v1) 2.2.0+33ffe9ec90
+		fabric-loot-api-v2: Fabric Loot API (v2) 1.1.6+83a8659290
+		fabric-message-api-v1: Fabric Message API (v1) 5.0.4+93d8cb8290
+		fabric-mining-level-api-v1: Fabric Mining Level API (v1) 2.1.17+33fbc73890
+		fabric-models-v0: Fabric Models (v0) 0.3.18+c6af733c90
+		fabric-networking-api-v1: Fabric Networking API (v1) 1.2.5+c6af733c90
+		fabric-object-builder-api-v1: Fabric Object Builder API (v1) 4.0.14+93d8cb8290
+		fabric-particles-v1: Fabric Particles (v1) 1.0.11+79adfe0a90
+		fabric-registry-sync-v0: Fabric Registry Sync (v0) 0.9.26+c6af733c90
+		fabric-renderer-api-v1: Fabric Renderer API (v1) 1.0.12+c0ae659d90
+		fabric-renderer-indigo: Fabric Renderer - Indigo 0.6.14+aeb40ebe90
+		fabric-rendering-data-attachment-v1: Fabric Rendering Data Attachment (v1) 0.3.15+aeb40ebe90
+		fabric-rendering-fluids-v1: Fabric Rendering Fluids (v1) 3.0.8+c6af733c90
+		fabric-rendering-v1: Fabric Rendering (v1) 1.11.0+73145abb90
+		fabric-resource-conditions-api-v1: Fabric Resource Conditions API (v1) 2.1.0+aae9039d90
+		fabric-resource-loader-v0: Fabric Resource Loader (v0) 0.7.2+70efcffe90
+		fabric-screen-api-v1: Fabric Screen API (v1) 1.0.27+93d8cb8290
+		fabric-screen-handler-api-v1: Fabric Screen Handler API (v1) 1.3.1+1cc24b1b90
+		fabric-sound-api-v1: Fabric Sound API (v1) 1.0.0+c4f28df590
+		fabric-textures-v0: Fabric Textures (v0) 1.0.21+aeb40ebe90
+		fabric-transfer-api-v1: Fabric Transfer API (v1) 2.1.1+93d8cb8290
+		fabric-transitive-access-wideners-v1: Fabric Transitive Access Wideners (v1) 1.3.1+42d99c3290
+		fabricloader: Fabric Loader 0.16.9
+		java: OpenJDK 64-Bit Server VM 23
+		minecraft: Minecraft 1.19.2
+		multiverse: Multiverse 1.0.0
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayerEntity['Player16'/173, l='ServerLevel[New World]', x=-1021.78, y=147.57, z=-3408.44]]
+	Data Packs: vanilla, Fabric Mods
+	World Generation: Experimental
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fabric'; Server brand changed to 'fabric'
+	Launched Version: Fabric

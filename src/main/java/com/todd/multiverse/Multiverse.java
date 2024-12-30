@@ -8,6 +8,7 @@ import com.todd.multiverse.screen.DestinationScreenHandler;
 import com.todd.multiverse.recipe.FluidDistillerRecipe;
 import com.todd.multiverse.registry.ModEntities;
 import com.todd.multiverse.screen.ModScreenHandlers;
+import com.todd.multiverse.world.ModFeatures;
 import com.todd.multiverse.world.biomes.CrystalHillsBiome;
 import com.todd.multiverse.world.biomes.ModBiomes;
 import com.todd.multiverse.world.dimension.CrystalHillsDimension;
@@ -43,6 +44,7 @@ public class Multiverse implements ModInitializer {
 		initializeCore();
 		registerRecipes();
 		initializeLocations();
+		ModFeatures.register();
 
 		LOGGER.info("Multiverse Mod Initialized Successfully!");
 	}

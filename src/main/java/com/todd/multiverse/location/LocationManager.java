@@ -124,19 +124,44 @@ public class LocationManager {
         int maxY = world.getTopY();
         int minY = world.getBottomY();
 
-        for (int y = Math.min(pos.getY(), maxY); y >= minY; y--) {
+        // Gestione speciale per il Nether
+        if (world.getRegistryKey() == World.NETHER) {
+            // Nel Nether, cerchiamo un punto sicuro circa a metà dell'altezza
+            int netherSearchY = 64; // Altezza di partenza per il Nether
+
+            // Cerca verso l'alto e verso il basso da questo punto
+            for (int offset = 0; offset < 32; offset++) {
+                // Prova prima sopra
+                BlockPos upperCheck = new BlockPos(pos.getX(), netherSearchY + offset, pos.getZ());
+                if (isSafeLocation(world, upperCheck)) {
+                    return upperCheck;
+                }
+
+                // Poi prova sotto
+                BlockPos lowerCheck = new BlockPos(pos.getX(), netherSearchY - offset, pos.getZ());
+                if (isSafeLocation(world, lowerCheck)) {
+                    return lowerCheck;
+                }
+            }
+
+            // Se non troviamo nulla, torna alla posizione di default nel Nether
+            return new BlockPos(pos.getX(), 64, pos.getZ());
+        }
+
+        // Per tutti gli altri mondi (superficie)
+        for (int y = maxY; y >= minY; y--) {
             BlockPos checkPos = new BlockPos(pos.getX(), y, pos.getZ());
             BlockPos abovePos = checkPos.up();
 
             if (world.getBlockState(checkPos).isSolidBlock(world, checkPos) &&
-                    world.getBlockState(abovePos).isAir()) {
+                    world.getBlockState(abovePos).isAir() &&
+                    world.getBlockState(abovePos.up()).isAir()) {
                 return abovePos;
             }
         }
 
         return new BlockPos(pos.getX(), 64, pos.getZ());
     }
-
     private static boolean isSafeLocation(ServerWorld world, BlockPos pos) {
         if (!world.getBlockState(pos).isAir() || !world.getBlockState(pos.up()).isAir()) {
             return false;

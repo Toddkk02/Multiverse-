@@ -283,7 +283,11 @@ public class DestinationScreen extends HandledScreen<DestinationScreenHandler> {
     }
 
     private String formatDimensionName(String dimId) {
-        return dimId.replace("minecraft:", "").replace("_", " ");
+        int colonIndex = dimId.indexOf(':');
+        // Rimuove il prefisso prima di ':' se esiste
+        String formatted = (colonIndex != -1) ? dimId.substring(colonIndex + 1) : dimId;
+        // Sostituisce gli underscore con spazi
+        return formatted.replace("_", " ");
     }
 
     private void selectDimension(String dimension) {
